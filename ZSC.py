@@ -1,19 +1,17 @@
-
-
 import streamlit as st
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from pandas import json_normalize
 import os, gc, warnings
-from torch import layout
 import torch
+from torch import layout
 warnings.filterwarnings("ignore")
 import json
 import gc
 gc.collect()
 model = "facebook/bart-large-mnli" 
 torch.cuda.empty_cache()
-#import transformers
+import transformers
 from transformers import pipeline
 
 
@@ -22,16 +20,7 @@ st.set_page_config(page_title="Classifier", page_icon=None, initial_sidebar_stat
 st.title("Text Classifier")
 uploaded_file=st.sidebar.file_uploader("")
 
-#df = pd.read_csv('C:\\Users\\sande\\Desktop\\Application Development\\NLP\\ZeroShot\\input\\commentsfile.csv')
 labels = st.sidebar.text_input("Categories")
-
-# create some dataframe
-#df = pd.DataFrame({f"f_{i}": list(range(100)) for i in range(10)})
-
-#filtered = st.multiselect("Filter columns", options=list(df.columns), default=list(df.columns))
-
-#st.write(df[filtered])
-
 
 def check_password():
     password = st.sidebar.text_input("Password", type="password")
